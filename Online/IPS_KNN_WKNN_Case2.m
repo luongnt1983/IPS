@@ -1,7 +1,7 @@
 clc;
 clear;
-Case1 = xlsread('C:\IPS\Online\Case1.xlsx');
-Case1(:, 1) = [];
+Case2 = xlsread('C:\IPS\Online\Case2.xlsx');
+Case2(:, 1) = [];
 Mean_RSS = xlsread('C:\IPS\Online\Mean_100_RSS.xlsx');
 XY = []; XY = [XY, Mean_RSS(:, 2)]; XY = [XY, Mean_RSS(:, 3)];
 
@@ -17,7 +17,7 @@ tic
 K = 3;
 Err_3NN = [];
 for t = 1:m
-    RSS = Case1(t, :);
+    RSS = Case2(t, :);
     NN = [];
     for i = 1 : m
         d = 0;
@@ -50,7 +50,7 @@ end
 K = 7;
 Err_7NN = [];
 for t = 1:m
-    RSS = Case1(t, :);
+    RSS = Case2(t, :);
     NN = [];
     for i = 1 : m
         d = 0;
@@ -83,7 +83,7 @@ end
 K = 11;
 Err_11NN = [];
 for t = 1:m
-    RSS = Case1(t, :);
+    RSS = Case2(t, :);
     NN = [];
     for i = 1 : m
         d = 0;
@@ -115,13 +115,13 @@ end
 toc
 %==========================================================================
 
-%Weighted KNN Algorithm: K=3, K=7, K=11.
+%WKNN Algorithm: K=3, K=7, K=11.
 %==========================================================================
 tic
 K = 3;
 Err_W3NN = [];
 for t = 1:m
-    RSS = Case1(t, :);
+    RSS = Case2(t, :);
     NN = [];
     for i = 1 : m
         d = 0;
@@ -161,7 +161,7 @@ end
 K = 7;
 Err_W7NN = [];
 for t = 1:m
-    RSS = Case1(t, :);
+    RSS = Case2(t, :);
     NN = [];
     for i = 1 : m
         d = 0;
@@ -201,7 +201,7 @@ end
 K = 11;
 Err_W11NN = [];
 for t = 1:m
-    RSS = Case1(t, :);
+    RSS = Case2(t, :);
     NN = [];
     for i = 1 : m
         d = 0;
@@ -248,12 +248,12 @@ end
 Err_W3NN = Err_W3NN'; Err_W7NN = Err_W7NN'; Err_W11NN = Err_W11NN';
 
 %==========================================================================================
-figure(8)
+figure(9)
 subplot(3, 1, 1);
 plot(RP, Err_3NN, '--b', RP, Err_W3NN, '--r', 'LineWidth',2);
 legend('KNN, K = 3', 'WKNN, K = 3');
 ylabel('Positioning Error (m)', 'Color', 'k', 'FontSize', 10);
-title('Experimental Results of 2 Algorithms (Case 1)', 'Color', 'b', 'FontSize', 14, 'FontWeight', 'bold');
+title('Experimental Results of 2 Algorithms (Case 2)', 'Color', 'b', 'FontSize', 14, 'FontWeight', 'bold');
 xlim([0 205]); ylim([0 8])
 
 subplot(3, 1, 2);
